@@ -3,6 +3,7 @@ require_once __DIR__ . '/app/Controllers/AuthController.php';
 require_once __DIR__ . '/app/Controllers/UsuariosController.php';
 require_once __DIR__ . '/app/Controllers/PessoasController.php';
 require_once __DIR__ . '/app/Controllers/TiposAtendimentosController.php';
+require_once __DIR__ . '/app/Controllers/AtendimentosController.php';
 require_once __DIR__ . '/app/Middleware/auth.php';
 
 $controller = $_GET['controller'] ?? 'auth';
@@ -49,6 +50,17 @@ elseif ($controller === 'tipos_atendimentos') {
         case 'atualizar': $tiposController->atualizar(); break;
         case 'excluir': $tiposController->excluir(); break;
         default: echo 'Ação de tipos de atendimento não encontrada.'; break;
+    }
+}
+elseif ($controller === 'atendimentos') {
+    exigirAutenticacao();
+    $atendimentosController = new AtendimentosController();
+    switch ($action) {
+        case 'listar': $atendimentosController->listar(); break;
+        case 'buscar': $atendimentosController->buscar(); break;
+        case 'criar': $atendimentosController->criar(); break;
+        case 'alterarStatus': $atendimentosController->alterarStatus(); break;
+        default: http_response_code(404); echo 'Ação de atendimentos não encontrada.'; break;
     }
 }
 else {
