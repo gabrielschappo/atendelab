@@ -114,7 +114,7 @@ class UsuariosController {
         }
     }
 
-    public function excluir(): void {
+    public function inativar(): void {
         header('Content-Type: application/json; charset=utf-8');
         $id = filter_input(INPUT_POST, 'id', FILTER_VALIDATE_INT);
         
