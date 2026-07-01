@@ -83,7 +83,7 @@ elseif ($controller === 'atendimentos') {
         case 'visualizar': $atendimentosController->visualizar(); break;
         case 'criar': $atendimentosController->criar(); break;
         case 'alterarStatus': 
-        case 'atualizarStatus': $atendimentosController->atualizarStatus(); break; 
+        case 'atualizarStatus': $atendimentosController->alterarStatus(); break; 
         case 'opcoesFormulario': $atendimentosController->opcoesFormulario(); break;
         default: http_response_code(404); echo 'Ação de atendimentos não encontrada.'; break;
     }
